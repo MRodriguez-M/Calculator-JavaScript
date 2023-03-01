@@ -7,7 +7,7 @@ const buttonData = {
     "seven": "7",
     "eight": "8",
     "nine": "9",
-    "multiply": "x",
+    "multiply": "*",
     "four": "4",
     "five": "5",
     "six": "6",
@@ -26,7 +26,35 @@ const Calculator = () => {
     const [output, setOutput] = useState('0');
 
     const handleClick = (buttonSymbol) => {
-        setInput(input + buttonSymbol);
+        switch(buttonSymbol) {
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+                setInput(input + buttonSymbol);
+                break;
+            case "0":
+                setInput(input + buttonSymbol);
+                break;
+            case "+":
+            case "-":
+            case "*":
+            case "/":
+                setInput(input + buttonSymbol);
+                break;
+            case "=":
+                setInput(input + buttonSymbol);
+                setOutput(eval(input));
+                break;
+            default:
+                setInput("");
+                setOutput("0");
+        }
     };
 
     return (
