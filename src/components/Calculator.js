@@ -49,7 +49,9 @@ const Calculator = () => {
                 }
                 break;
             case ".":
-                setInput(input + buttonSymbol);
+                if(input.substring(input.length-1, input.length) != ".") {
+                    setInput(input + buttonSymbol);
+                }
                 break;
             case "+":
             case "-":
