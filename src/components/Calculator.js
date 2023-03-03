@@ -39,6 +39,10 @@ const Calculator = () => {
                 if(input == "0" || input.substring(input.length-2, input.length) == "+0" || input.substring(input.length-2, input.length) == "-0" || input.substring(input.length-2, input.length) == "*0" || input.substring(input.length-2, input.length) == "/0") {
                     setInput(input.substring(0, input.length-1) + buttonSymbol);
                 }
+                else if(output !== "0") {
+                    setInput(buttonSymbol);
+                    setOutput("0");
+                }
                 else {
                     setInput(input + buttonSymbol); 
                 }
@@ -49,15 +53,17 @@ const Calculator = () => {
                 }
                 break;
             case ".":
+            case "-":
                 if(input.substring(input.length-1, input.length) != ".") {
                     setInput(input + buttonSymbol);
                 }
                 break;
             case "+":
-            case "-":
             case "*":
             case "/":
-                setInput(input + buttonSymbol);
+                if(input.length != 0 && input.substring(input.length-1, input.length) != "." && input.substring(input.length-1, input.length) != "+" && input.substring(input.length-1, input.length) != "-" && input.substring(input.length-1, input.length) != "*" && input.substring(input.length-1, input.length) != "/") {
+                    setInput(input + buttonSymbol);
+                }
                 break;
             case "=":
                 setInput(input + buttonSymbol);
