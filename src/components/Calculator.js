@@ -48,20 +48,40 @@ const Calculator = () => {
                 }
                 break;
             case "0":
-                if(input != "0" && input.substring(input.length-2, input.length) != "+0" && input.substring(input.length-2, input.length) != "-0" && input.substring(input.length-2, input.length) != "*0" && input.substring(input.length-2, input.length) != "/0") {
+                if(output !== "0") {
+                    setInput(buttonSymbol);
+                    setOutput("0");
+                }
+                else if(input != "0" && input.substring(input.length-2, input.length) != "+0" && input.substring(input.length-2, input.length) != "-0" && input.substring(input.length-2, input.length) != "*0" && input.substring(input.length-2, input.length) != "/0") {
                     setInput(input + buttonSymbol);
                 }
                 break;
             case ".":
+                if(output !== "0") {
+                    setInput(buttonSymbol);
+                    setOutput("0");
+                }
+                else if(input.substring(input.length-1, input.length) != ".") {
+                    setInput(input + buttonSymbol);
+                }
+                break;
             case "-":
-                if(input.substring(input.length-1, input.length) != ".") {
+                if(output !== "0") {
+                    setInput(output + buttonSymbol);
+                    setOutput("0");
+                }
+                else if(input.substring(input.length-1, input.length) != ".") {
                     setInput(input + buttonSymbol);
                 }
                 break;
             case "+":
             case "*":
             case "/":
-                if(input.length != 0 && input.substring(input.length-1, input.length) != "." && input.substring(input.length-1, input.length) != "+" && input.substring(input.length-1, input.length) != "-" && input.substring(input.length-1, input.length) != "*" && input.substring(input.length-1, input.length) != "/") {
+                if(output !== "0") {
+                    setInput(output + buttonSymbol);
+                    setOutput("0");
+                }
+                else if(input.length != 0 && input.substring(input.length-1, input.length) != "." && input.substring(input.length-1, input.length) != "+" && input.substring(input.length-1, input.length) != "-" && input.substring(input.length-1, input.length) != "*" && input.substring(input.length-1, input.length) != "/") {
                     setInput(input + buttonSymbol);
                 }
                 break;
