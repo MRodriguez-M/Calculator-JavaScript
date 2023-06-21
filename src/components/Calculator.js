@@ -3,6 +3,9 @@ import Button from "./Button";
 
 const buttonData = {
     "clear": "CLEAR",
+    "square": "x^2",
+    "square root": "SQRT",
+    "backspace": "BACK",
     "divide": "/",
     "seven": "7",
     "eight": "8",
@@ -88,6 +91,9 @@ const Calculator = () => {
             case "=":
                 setInput(input + buttonSymbol);
                 setOutput(eval(input));
+                break;
+            case "BACK":
+                setInput(prev => prev.substring(0, prev.length-1));
                 break;
             default:
                 setInput("");
